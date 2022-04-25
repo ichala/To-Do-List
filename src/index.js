@@ -1,6 +1,6 @@
 import './style.css';
 import './reset.css';
-import functions from './modules/functions';
-const Fn = new functions();
-Fn.InitData();
+import Functions from './modules/functions.js';
 
+const Fn = new Functions();
+Fn.InitData();

@@ -1,5 +1,8 @@
+/* eslint-disable  prefer-destructuring */
+/* eslint-disable  no-restricted-globals */
 import SingleTask from './Task.js';
-export default class functions {
+
+export default class Functions {
   constructor() {
     this.tasks = localStorage.getItem('tasks')
       ? JSON.parse(localStorage.getItem('tasks'))
@@ -49,6 +52,7 @@ export default class functions {
       });
     });
   };
+
   display = () => {
     const ContainerList = document.querySelector('.lists');
     if (this.tasks) {
@@ -80,6 +84,7 @@ export default class functions {
       }
     });
   };
+
   add = (desc, completed) => {
     let id = 1;
     if (this.tasks.length > 0) {
@@ -100,7 +105,7 @@ export default class functions {
     this.RefactorIndex(this.tasks);
   };
 
-  RefactorIndex = (arr) => {
+  RefactorIndex = () => {
     this.tasks.forEach((item, i) => {
       item.index = i + 1;
     });
