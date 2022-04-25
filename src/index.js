@@ -1,6 +1,6 @@
 import './style.css';
 import './reset.css';
-import Functions from './modules/functions.js';
+import Control from './modules/control.js';
 
-const Fn = new Functions();
+const Fn = new Control();
 Fn.InitData();

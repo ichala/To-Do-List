@@ -1,62 +1,10 @@
-/* eslint-disable  prefer-destructuring */
 /* eslint-disable  no-restricted-globals */
 import SingleTask from './Task.js';
 
-export default class Functions {
-  constructor() {
-    this.tasks = localStorage.getItem('tasks')
-      ? JSON.parse(localStorage.getItem('tasks'))
-      : [];
-  }
-
-  InitData = () => {
-    this.display();
-    const AddBtn = document.querySelector('#addTask');
-    const DeleteBtn = document.querySelectorAll('.deleteBtn');
-    const EditBtn = document.querySelectorAll('.editBtn');
-    const AllLi = document.querySelectorAll('.checktitle');
-    AddBtn.addEventListener('click', () => {
-      const data = document.querySelector('#TaskData').value;
-      this.add(data, false);
-    });
-    DeleteBtn.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const id = Number(btn.id);
-        this.delete(id);
-      });
-    });
-    EditBtn.forEach((btn) => {
-      const id = btn.id;
-
-      btn.addEventListener('click', () => {
-        AllLi.forEach((li) => {
-          if (li.id === id) {
-            li.innerHTML = `<input id=${li.id} class='inputedit' type='text' value=${li.innerText}>`;
-            EditBtn.forEach((buttons) => {
-              buttons.classList.add('hide');
-            });
-
-            document.querySelectorAll('.inputedit').forEach((edit) => {
-              edit.addEventListener('change', () => {
-                if (edit.id === id) {
-                  this.edit(id, document.querySelector('.inputedit').value);
-                  EditBtn.forEach((buttons) => {
-                    buttons.classList.remove('hide');
-                  });
-                }
-                li.innerHTML = document.querySelector('.inputedit').value;
-              });
-            });
-          }
-        });
-      });
-    });
-  };
-
-  display = () => {
+export const display = (tasks) => {
     const ContainerList = document.querySelector('.lists');
-    if (this.tasks) {
-      this.tasks.forEach((item) => {
+    if (tasks) {
+      tasks.forEach((item) => {
         const NewItemHtml = `<div  class='listinfos '><div class='checklist'> <input type='checkbox' name='${
           item.index
         }' id='${item.index}' ${
@@ -76,44 +24,42 @@ export default class Functions {
     }
   };
 
-  edit = (id, data) => {
-    this.tasks.forEach((element) => {
+export const add = (tasks,desc, completed) => {
+    let id = 1;
+    if (tasks.length > 0) {
+      id = tasks[tasks.length - 1].index + 1;
+    }
+    const NewTask = new SingleTask(id, completed, desc);
+    tasks.push(NewTask);
+    LocalSave(tasks);
+  };
+  export const LocalSave = (arr) => {
+    localStorage.setItem('tasks', JSON.stringify(arr));
+    location.reload();
+  };
+
+export const editItem = (tasks,id, data) => {
+    tasks.forEach((element) => {
       if (element.index === Number(id)) {
         element.description = data;
-        this.LocalSave(this.tasks);
+       LocalSave(tasks);
       }
     });
   };
 
-  add = (desc, completed) => {
-    let id = 1;
-    if (this.tasks.length > 0) {
-      id = this.tasks[this.tasks.length - 1].index + 1;
-    }
-    const NewTask = new SingleTask(id, completed, desc);
-    this.tasks.push(NewTask);
-    this.LocalSave(this.tasks);
-  };
-
-  delete = (id) => {
-    this.tasks = this.tasks.filter((item) => {
+export const DeleteItem = (tasks,id) => {
+    tasks = tasks.filter((item) => {
       if (id === item.index) {
         return false;
       }
       return true;
     });
-    this.RefactorIndex(this.tasks);
+    RefactorIndex(tasks);
   };
 
-  RefactorIndex = () => {
-    this.tasks.forEach((item, i) => {
+  const RefactorIndex = (tasks) => {
+    tasks.forEach((item, i) => {
       item.index = i + 1;
     });
-    this.LocalSave(this.tasks);
+    LocalSave(tasks);
   };
-
-  LocalSave = (arr) => {
-    localStorage.setItem('tasks', JSON.stringify(arr));
-    location.reload();
-  };
-}
