@@ -1,16 +1,16 @@
 /* eslint-disable  no-restricted-globals */
 import SingleTask from './Task.js';
 
+const LocalSave = (arr) => {
+  localStorage.setItem('tasks', JSON.stringify(arr));
+  location.reload();
+};
+
 const RefactorIndex = (tasks) => {
   tasks.forEach((item, i) => {
     item.index = i + 1;
   });
   LocalSave(tasks);
-};
-
-const LocalSave = (arr) => {
-  localStorage.setItem('tasks', JSON.stringify(arr));
-  location.reload();
 };
 
 export const display = (tasks) => {
