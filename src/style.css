@@ -13,6 +13,28 @@ body {
   flex-direction: column;
 }
 
+.Tools {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+i {
+  cursor: pointer;
+}
+
+.editIcon {
+  margin-left: 5px !important;
+  color: rgb(126, 124, 4);
+}
+
+.deleteIcon {
+  margin-left: 5px !important;
+  color: rgb(231, 88, 35);
+}
+
 .lists {
   margin: 30px;
   display: flex;
@@ -61,6 +83,10 @@ body {
 .checklist {
   padding: 10px;
   border: 1px solid black;
+}
+
+.inputedit {
+  padding: 10px;
 }
 
 .checktitle {
