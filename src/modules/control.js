@@ -1,5 +1,5 @@
 /* eslint-disable  prefer-destructuring */
-import {display , add , editItem ,DeleteItem } from './functions.js'
+import { display, add, editItem, DeleteItem } from './functions.js';
 export default class Control {
   constructor() {
     this.tasks = localStorage.getItem('tasks')
@@ -15,12 +15,12 @@ export default class Control {
     const AllLi = document.querySelectorAll('.checktitle');
     AddBtn.addEventListener('click', () => {
       const data = document.querySelector('#TaskData').value;
-      add(this.tasks,data, false);
+      add(this.tasks, data, false);
     });
     DeleteBtn.forEach((btn) => {
       btn.addEventListener('click', () => {
         const id = Number(btn.id);
-        DeleteItem(this.tasks,id);
+        DeleteItem(this.tasks, id);
       });
     });
     EditBtn.forEach((btn) => {
@@ -37,7 +37,11 @@ export default class Control {
             document.querySelectorAll('.inputedit').forEach((edit) => {
               edit.addEventListener('change', () => {
                 if (edit.id === id) {
-                  editItem(this.tasks,id, document.querySelector('.inputedit').value);
+                  editItem(
+                    this.tasks,
+                    id,
+                    document.querySelector('.inputedit').value
+                  );
                   EditBtn.forEach((buttons) => {
                     buttons.classList.remove('hide');
                   });
