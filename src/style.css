@@ -20,6 +20,35 @@ body {
   width: 100%;
 }
 
+.input-task {
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+}
+
+.input {
+  width: 60%;
+  padding: 10px;
+}
+
+.remove_completed {
+  margin: 10px;
+  padding: 10px;
+  background-color: rgb(249, 98, 98);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.add {
+  padding: 10px;
+  background-color: #dbeafe;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .sinlge-list {
   padding: 15px;
   display: flex;
