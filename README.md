@@ -20,7 +20,7 @@ To get a local copy up and running follow these simple example steps.
 4- Write git@github.com:ichala/TO-DO-LIST.git <br>
 5- Go to the repository folder in your command prompt cd TO-DO-LIST<br>
 6- Run npm install to install the dev dependencies for linters and node sass.
-
+6- Run npm start.
 ### Prerequisites
 
 Web Browser (Chrome,Safari,Mozilla,Edge)
