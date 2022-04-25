@@ -1,6 +1,18 @@
 /* eslint-disable  no-restricted-globals */
 import SingleTask from './Task.js';
 
+const RefactorIndex = (tasks) => {
+  tasks.forEach((item, i) => {
+    item.index = i + 1;
+  });
+  LocalSave(tasks);
+};
+
+const LocalSave = (arr) => {
+  localStorage.setItem('tasks', JSON.stringify(arr));
+  location.reload();
+};
+
 export const display = (tasks) => {
   const ContainerList = document.querySelector('.lists');
   if (tasks) {
@@ -33,10 +45,6 @@ export const add = (tasks, desc, completed) => {
   tasks.push(NewTask);
   LocalSave(tasks);
 };
-export const LocalSave = (arr) => {
-  localStorage.setItem('tasks', JSON.stringify(arr));
-  location.reload();
-};
 
 export const editItem = (tasks, id, data) => {
   tasks.forEach((element) => {
@@ -55,11 +63,4 @@ export const DeleteItem = (tasks, id) => {
     return true;
   });
   RefactorIndex(tasks);
-};
-
-const RefactorIndex = (tasks) => {
-  tasks.forEach((item, i) => {
-    item.index = i + 1;
-  });
-  LocalSave(tasks);
 };
