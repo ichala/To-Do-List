@@ -1,5 +1,7 @@
 /* eslint-disable  prefer-destructuring */
-import { display, add, editItem, DeleteItem } from './functions.js';
+import {
+  display, add, editItem, DeleteItem,
+} from './functions.js';
 
 export default class Control {
   constructor() {
@@ -38,8 +40,7 @@ export default class Control {
             document.querySelectorAll('.inputedit').forEach((edit) => {
               edit.addEventListener('change', () => {
                 if (edit.id === id) {
-                  editItem(this.tasks,id,document.querySelector('.inputedit').value
-                  );
+                  editItem(this.tasks, id, document.querySelector('.inputedit').value);
                   EditBtn.forEach((buttons) => {
                     buttons.classList.remove('hide');
                   });
