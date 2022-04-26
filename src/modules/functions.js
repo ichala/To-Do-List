@@ -1,7 +1,7 @@
 /* eslint-disable  no-restricted-globals */
 import SingleTask from './Task.js';
 
-const LocalSave = (arr) => {
+export const LocalSave = (arr) => {
   localStorage.setItem('tasks', JSON.stringify(arr));
   location.reload();
 };
@@ -17,11 +17,13 @@ export const display = (tasks) => {
   const ContainerList = document.querySelector('.lists');
   if (tasks) {
     tasks.forEach((item) => {
-      const NewItemHtml = `<div  class='listinfos '><div class='checklist'> <input type='checkbox' name='${
+      const NewItemHtml = `<div  class='listinfos '><div class='checklist'> <input class='CheckboxData' type='checkbox' name='${
         item.index
       }' id='${item.index}' ${
         item.completed && 'checked'
-      }> </div><div class='checktitle' id=${item.index}>${
+      }> </div><div class='checktitle ${
+        item.completed && 'checkedItem'
+      }' id=${item.index}>${
         item.description
       }</div></div> <div class='Tools'><div class='deleteBtn' id =${
         item.index
