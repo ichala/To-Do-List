@@ -13,6 +13,10 @@ export default class Interactive {
       const TaskList = this.tasks;
       const CheckBox = document.querySelectorAll('.CheckboxData');
       const DeleteAll = document.querySelector('.remove_completed');
+      const RefreshBtn = document.querySelector('.refresh');
+      RefreshBtn.addEventListener('click', () => {
+        LocalSave(TaskList);
+      });
       DeleteAll.addEventListener('click', () => {
         this.DeleteCompleted(TaskList);
       });
