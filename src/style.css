@@ -35,6 +35,10 @@ i {
   color: rgb(231, 88, 35);
 }
 
+.checkedItem {
+  text-decoration: line-through;
+}
+
 .lists {
   margin: 30px;
   display: flex;
