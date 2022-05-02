@@ -28,7 +28,6 @@ export default class Control {
     });
     EditBtn.forEach((btn) => {
       const id = btn.id;
-
       btn.addEventListener('click', () => {
         AllLi.forEach((li) => {
           if (li.id === id) {
@@ -36,7 +35,6 @@ export default class Control {
             EditBtn.forEach((buttons) => {
               buttons.classList.add('hide');
             });
-
             document.querySelectorAll('.inputedit').forEach((edit) => {
               edit.addEventListener('change', () => {
                 if (edit.id === id) {
