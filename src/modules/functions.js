@@ -3,7 +3,6 @@ import SingleTask from './Task.js';
 
 export const LocalSave = (arr) => {
   localStorage.setItem('tasks', JSON.stringify(arr));
-  location.reload();
 };
 
 const RefactorIndex = (tasks) => {
