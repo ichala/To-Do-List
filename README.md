@@ -33,6 +33,10 @@ No need to install. Open the index.html file with a browser.
 
 You can navigate through the navigation bar to see the different pages.
 
+### Run tests
+
+You can use npm test to run all the tests
+
 ### Deployment
 
 You can check the Github Pages link.

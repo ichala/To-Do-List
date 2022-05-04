@@ -22,13 +22,17 @@ export default class Interactive {
       });
       CheckBox.forEach((box) => {
         box.addEventListener('change', () => {
-          TaskList.forEach((task) => {
-            if (task.index === Number(box.id)) {
-              task.completed = !task.completed;
-              LocalSave(TaskList);
-            }
-          });
+          this.UpdateCompleted(TaskList, box.id);
         });
+      });
+    }
+
+    UpdateCompleted = (TaskList, Id) => {
+      TaskList.forEach((task) => {
+        if (task.index === Number(Id)) {
+          task.completed = !task.completed;
+          LocalSave(TaskList);
+        }
       });
     }
 
