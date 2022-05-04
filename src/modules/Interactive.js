@@ -22,12 +22,12 @@ export default class Interactive {
       });
       CheckBox.forEach((box) => {
         box.addEventListener('change', () => {
-          this.UpdateCompleted(TaskList,box.id)
+          this.UpdateCompleted(TaskList, box.id);
         });
       });
     }
 
-    UpdateCompleted = (TaskList , Id) => {
+    UpdateCompleted = (TaskList, Id) => {
       TaskList.forEach((task) => {
         if (task.index === Number(Id)) {
           task.completed = !task.completed;
